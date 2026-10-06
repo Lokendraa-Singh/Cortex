@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Cortex — Remember every problem you've solved</title>
+<title>Cortex — DSA revision tracker</title>
 <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -17,13 +17,13 @@
           <span class="brand-name">Cortex</span>
         </div>
 
-        <h1 class="hero-headline">Solve it once.<br />Remember it forever.</h1>
+        <h1 class="hero-headline">Stop forgetting<br />the problems you solve.</h1>
 
         <p class="hero-sub">
-          Most of what you solve on LeetCode leaks out of memory within a week.
-          Cortex watches every problem you crack and quietly reschedules it —
-          <span class="accent-text">1 day, 3, 7, 15, 30</span> — so recall moves
-          from your notes into long-term memory before an interviewer asks for it.
+          I kept solving LeetCode problems and forgetting them a week later.
+          Cortex tells you when to revise each one, after
+          <span class="accent-text">1 day, then 3, 7, 15, 30</span>,
+          so it actually sticks.
         </p>
 
         <!-- Signature element: the spaced-repetition interval arc -->
@@ -66,11 +66,11 @@
           </div>
           <div class="hero-stat">
             <span class="hero-stat-num">🔥</span>
-            <span class="hero-stat-label">daily streak<br/>keeps you honest</span>
+            <span class="hero-stat-label">daily streak<br/>to keep you going</span>
           </div>
           <div class="hero-stat">
-            <span class="hero-stat-num">AI</span>
-            <span class="hero-stat-label">reviews your<br/>approach on request</span>
+            <span class="hero-stat-num">📊</span>
+            <span class="hero-stat-label">topic-wise<br/>progress</span>
           </div>
         </div>
       </div>
@@ -87,7 +87,7 @@
         </div>
 
         <form id="loginForm">
-          <p class="form-intro">Pick up where you left off — your due revisions are waiting.</p>
+          <p class="form-intro">Welcome back. Log in to see what's due today.</p>
           <label class="field-label">Email</label>
           <input type="email" id="loginEmail" placeholder="you@example.com" required />
           <label class="field-label">Password</label>
@@ -96,14 +96,14 @@
         </form>
 
         <form id="registerForm" class="hidden">
-          <p class="form-intro">Takes about 20 seconds. No credit card, no fine print.</p>
+          <p class="form-intro">Takes about 20 seconds.</p>
           <label class="field-label">Full name</label>
           <input type="text" id="registerName" placeholder="Your name" required />
           <label class="field-label">Email</label>
           <input type="email" id="registerEmail" placeholder="you@example.com" required />
           <label class="field-label">Password</label>
           <input type="password" id="registerPassword" placeholder="Create a password" required />
-          <button type="submit" class="primary-btn">Create my account</button>
+          <button type="submit" class="primary-btn">Create account</button>
         </form>
 
         <p id="message" class="message"></p>
