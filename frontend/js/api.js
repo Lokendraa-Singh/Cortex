@@ -1,5 +1,5 @@
 // deploy karne ke baad isko apne live backend URL se replace karna hai (README dekho)
-const API_BASE_URL = "http://localhost:5000/api";
+ const API_BASE_URL = "https://cortex-backend-rut1.onrender.com/api";
 
 function getToken() {
   return localStorage.getItem("token");
