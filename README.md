@@ -5,6 +5,7 @@ A DSA revision tracker that uses spaced repetition (same idea as Anki) to remind
 Built this because I kept solving LeetCode problems and forgetting them a week later.
 
 ## Features
+
 - Login/Register (JWT + bcrypt)
 - Add solved problems, see what's due today
 - Mark a problem "Remembered" or "Forgot" — the next revision date adjusts automatically
@@ -13,11 +14,12 @@ Built this because I kept solving LeetCode problems and forgetting them a week l
 - Daily email reminder via cron job
 
 ## Stack
+
 Node.js, Express, MongoDB, JWT, node-cron, Nodemailer on the backend. Plain HTML/CSS/JS on the frontend, no framework.
 
 ## Running it locally
 
-```bash
+```
 cd backend
 npm install
 cp .env.example .env   # fill in your own values
@@ -36,9 +38,10 @@ EMAIL_USER=your gmail
 EMAIL_PASS=gmail app password (not your real password)
 ```
 
-
 ## Deploying
+
 Backend on Render (root directory: `backend`, build: `npm install`, start: `npm start`), frontend on Vercel (root directory: `frontend`). Database on MongoDB Atlas. After the backend is live, update `API_BASE_URL` in `frontend/js/api.js` to point to it.
 
 ## How the scheduling logic works
+
 `backend/utils/spacedRepetition.js` — each problem has an `intervalIndex` pointing into `[1, 3, 7, 15, 30]`. "Remembered" moves it forward, "Forgot" resets it to 0.

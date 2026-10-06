@@ -114,31 +114,6 @@ document.getElementById("problemForm").addEventListener("submit", async (e) => {
   }
 });
 
-// ---------- AI CODE REVIEW ----------
-document.getElementById("aiReviewBtn").addEventListener("click", async () => {
-  const code = document.getElementById("aiCode").value;
-  const problemTitle = document.getElementById("aiProblemTitle").value;
-  const feedbackBox = document.getElementById("aiFeedback");
-  const aiBtn = document.getElementById("aiReviewBtn");
-
-  if (!code.trim()) {
-    alert("Please paste your code first");
-    return;
-  }
-
-  feedbackBox.classList.remove("hidden");
-  feedbackBox.textContent = "Analyzing your code...";
-  aiBtn.disabled = true;
-
-  try {
-    const data = await apiRequest("/ai/review", "POST", { code, problemTitle });
-    feedbackBox.textContent = data.feedback;
-  } catch (err) {
-    feedbackBox.textContent = `Error: ${err.message}`;
-  } finally {
-    aiBtn.disabled = false;
-  }
-});
 
 // ---------- ALL PROBLEMS TABLE ----------
 async function loadAllProblems(page = 1, search = "") {
