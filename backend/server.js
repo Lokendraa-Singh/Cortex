@@ -6,7 +6,6 @@ const startRevisionReminderCron = require("./cron/revisionReminder");
 
 const authRoutes = require("./routes/authRoutes");
 const problemRoutes = require("./routes/problemRoutes");
-const aiRoutes = require("./routes/aiRoutes");
 
 const app = express();
 
@@ -17,7 +16,6 @@ connectDB();
 
 app.use("/api/auth", authRoutes);
 app.use("/api/problems", problemRoutes);
-app.use("/api/ai", aiRoutes);
 
 app.get("/", (req, res) => {
   res.send("Cortex API is running");
