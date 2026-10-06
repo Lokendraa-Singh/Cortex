@@ -11,7 +11,6 @@ Built this because I kept solving LeetCode problems and forgetting them a week l
 - Daily streak tracking
 - Topic-wise breakdown (Array, DP, Graph, etc.)
 - Daily email reminder via cron job
-- AI code review (Claude API) — needs your own API key to work, see below
 
 ## Stack
 Node.js, Express, MongoDB, JWT, node-cron, Nodemailer on the backend. Plain HTML/CSS/JS on the frontend, no framework.
@@ -35,10 +34,8 @@ MONGO_URI=your MongoDB connection string
 JWT_SECRET=any random string
 EMAIL_USER=your gmail
 EMAIL_PASS=gmail app password (not your real password)
-ANTHROPIC_API_KEY=optional, only needed for AI review
 ```
 
-If you skip `ANTHROPIC_API_KEY`, the AI review button just shows a "not configured" message instead of breaking.
 
 ## Deploying
 Backend on Render (root directory: `backend`, build: `npm install`, start: `npm start`), frontend on Vercel (root directory: `frontend`). Database on MongoDB Atlas. After the backend is live, update `API_BASE_URL` in `frontend/js/api.js` to point to it.
