@@ -1,71 +1,51 @@
-# Cortex 🧠
+# Cortex
 
-### DSA Revision Tracker using Spaced Repetition
+A DSA revision tracker that uses spaced repetition (same idea as Anki) to remind you when to revise a problem again — 1 day, then 3, then 7, 15, 30. The longer you remember something, the longer the gap before it asks you again.
 
-Cortex is a DSA revision tracker that helps you remember coding problems using **spaced repetition**.
+Built this because I kept solving LeetCode problems and forgetting them a week later.
 
-Instead of solving a problem once and forgetting it a week later, Cortex automatically schedules it for revision at increasing intervals:
+Live: https://cortex-frontend-teal.vercel.app
 
-**1 → 3 → 7 → 15 → 30 days**
+## Features
 
-I built Cortex because I kept solving LeetCode problems and forgetting them later. The goal is simple — **solve less randomly, revise smarter, and remember longer.**
+- Login/Register (JWT + bcrypt)
+- Add solved problems, see what's due today
+- Mark a problem "Remembered" or "Forgot" — the next revision date adjusts automatically
+- Daily streak tracking
+- Topic-wise breakdown (Array, DP, Graph, etc.)
+- Email reminder for due problems via Resend API
 
----
+## Stack
 
-## ✨ Features
+Node.js, Express, MongoDB, JWT, Resend API on the backend. Plain HTML/CSS/JS on the frontend, no framework.
 
-- 🔐 **User Authentication** — Register and login using JWT & bcrypt
-- 📝 **Problem Tracking** — Add and manage solved DSA problems
-- 📅 **Today's Revisions** — See exactly which problems are due today
-- 🧠 **Spaced Repetition** — Automatic revision scheduling
-- ✅ **Remembered / Forgot** — Adjust the next revision based on your recall
-- 🔥 **Daily Streak** — Track your consistency
-- 📊 **Topic Breakdown** — Track problems by topics like Arrays, DP, Graphs, etc.
-- 🔎 **Search & Pagination** — Easily find your problems
-- 📧 **Email Reminders** — Get notified when problems are due for revision
+## Running it locally
 
----
+```
+cd backend
+npm install
+cp .env.example .env   # fill in your own values
+npm run dev
+```
 
-## 🛠️ Tech Stack
+Then just open `frontend/index.html` in a browser (or use Live Server). Backend runs on port 5000 by default.
 
-**Frontend**
-- HTML
-- CSS
-- JavaScript
+## Environment variables
 
-**Backend**
-- Node.js
-- Express.js
-- REST APIs
+```
+PORT=5000
+MONGO_URI=your MongoDB connection string
+JWT_SECRET=any random string
+CRON_SECRET=secret key for the reminder endpoint
+RESEND_API_KEY=your Resend API key
+```
 
-**Database**
-- MongoDB
-- Mongoose
+## Deploying
 
-**Authentication**
-- JWT
-- bcrypt
+Backend on Render (root directory: `backend`, build: `npm install`, start: `npm start`), frontend on Vercel (root directory: `frontend`). Database on MongoDB Atlas. After the backend is live, update `API_BASE_URL` in `frontend/js/api.js` to point to it.
 
-**Other**
-- Resend API
-- node-cron
-- Git & GitHub
+Render's free tier sleeps, so reminder emails are triggered by an external scheduler (cron-job.org) that calls `/api/cron/send-reminders?key=<CRON_SECRET>` every morning.
 
----
+## How the scheduling logic works
 
-## 🔄 How Spaced Repetition Works
-
-Cortex follows a simple revision schedule:
-
-```text
-Day 0
-  ↓
-1 Day
-  ↓
-3 Days
-  ↓
-7 Days
-  ↓
-15 Days
-  ↓
-30 Days
+`backend/utils/spacedRepetition.js` — each problem has an `intervalIndex` pointing into `[1, 3, 7, 15, 30]`. "Remembered" moves it forward, "Forgot" resets it to 0.
