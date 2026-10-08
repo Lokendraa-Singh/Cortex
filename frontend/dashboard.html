@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dashboard — Cortex</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="dashboard">
+    <header class="topbar">
+      <div class="topbar-brand">
+        <span class="brand-dot small"></span>
+        <div>
+          <h2>Cortex</h2>
+          <p class="topbar-tagline">Your revision brain, on autopilot</p>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <span id="userNameDisplay" class="user-chip"></span>
+        <button id="logoutBtn">Log out</button>
+      </div>
+    </header>
+
+    <!-- STATS -->
+    <section class="stats-grid">
+      <div class="stat-card streak">
+        <h3 id="currentStreak">0 🔥</h3>
+        <p>Day streak</p>
+      </div>
+      <div class="stat-card">
+        <h3 id="longestStreak">0</h3>
+        <p>Longest streak</p>
+      </div>
+      <div class="stat-card due">
+        <h3 id="dueTodayCount">0</h3>
+        <p>Due for revision today</p>
+      </div>
+      <div class="stat-card">
+        <h3 id="totalProblems">0</h3>
+        <p>Problems in your bank</p>
+      </div>
+    </section>
+
+    <!-- TODAY'S REVISION -->
+    <section class="card">
+      <div class="card-heading">
+        <h3>📌 Today's Revision</h3>
+        <p class="card-subtext">Everything below is scheduled to resurface today, based on how well you remembered it last time. Mark honestly — "Forgot" resets the clock, "Remembered" pushes the next check further out.</p>
+      </div>
+      <div id="dueTodayList" class="due-list"></div>
+    </section>
+
+    <!-- ADD PROBLEM -->
+    <section class="card">
+      <div class="card-heading">
+        <h3>➕ Log a Solved Problem</h3>
+        <p class="card-subtext">Add it the moment you solve it. Cortex schedules the first check-in for tomorrow — that's when short-term memory starts to fade.</p>
+      </div>
+      <form id="problemForm" class="problem-form">
+        <input type="text" id="title" placeholder="Problem title (e.g. Two Sum)" required />
+        <select id="topic" required>
+          <option value="">Select topic</option>
+          <option>Array</option>
+          <option>String</option>
+          <option>Hashing</option>
+          <option>Two Pointers</option>
+          <option>Sliding Window</option>
+          <option>Recursion</option>
+          <option>Tree</option>
+          <option>Graph</option>
+          <option>DP</option>
+          <option>Greedy</option>
+          <option>Other</option>
+        </select>
+        <select id="difficulty">
+          <option value="Easy">Easy</option>
+          <option value="Medium" selected>Medium</option>
+          <option value="Hard">Hard</option>
+        </select>
+        <input type="text" id="link" placeholder="Problem link (optional)" />
+        <textarea id="notes" placeholder="Your approach, in your own words (optional)"></textarea>
+        <button type="submit">Add to revision bank</button>
+      </form>
+    </section>
+
+    <!-- TOPIC BREAKDOWN -->
+    <section class="card">
+      <div class="card-heading">
+        <h3>📊 Topic-wise Progress</h3>
+        <p class="card-subtext">Where your practice is actually concentrated — useful for spotting the topic you keep avoiding.</p>
+      </div>
+      <div id="topicBreakdown" class="topic-breakdown"></div>
+    </section>
+
+    <!-- ALL PROBLEMS -->
+    <section class="card">
+      <div class="card-heading">
+        <h3>📚 Full Problem Bank</h3>
+        <p class="card-subtext">Every problem you've ever logged, and exactly when it'll ask to be revised next.</p>
+      </div>
+      <input type="text" id="searchInput" placeholder="Search by title..." class="search-box" />
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Topic</th>
+            <th>Difficulty</th>
+            <th>Next Revision</th>
+            <th>Times Revised</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="allProblemsBody"></tbody>
+      </table>
+      <div class="pagination" id="pagination"></div>
+    </section>
+
+    <footer class="dashboard-footer">
+      <p>Cortex — built to move DSA practice from short-term recall into long-term memory.</p>
+    </footer>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

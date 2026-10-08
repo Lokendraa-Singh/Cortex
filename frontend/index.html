@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cortex — DSA revision tracker</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="auth-page">
+
+    <!-- LEFT: Hero / concept panel -->
+    <div class="hero-panel">
+      <div class="hero-content">
+        <div class="brand-mark">
+          <span class="brand-dot"></span>
+          <span class="brand-name">Cortex</span>
+        </div>
+
+        <h1 class="hero-headline">Stop forgetting<br />the problems you solve.</h1>
+
+        <p class="hero-sub">
+          I kept solving LeetCode problems and forgetting them a week later.
+          Cortex tells you when to revise each one, after
+          <span class="accent-text">1 day, then 3, 7, 15, 30</span>,
+          so it actually sticks.
+        </p>
+
+        <!-- Signature element: the spaced-repetition interval arc -->
+        <svg class="interval-arc" viewBox="0 0 560 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M 30 170 Q 150 190 260 130 T 530 40" fill="none" stroke="url(#arcGradient)" stroke-width="2.5" stroke-dasharray="4 6" opacity="0.55"/>
+          <defs>
+            <linearGradient id="arcGradient" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#7C5CFF"/>
+              <stop offset="100%" stop-color="#FF9F4A"/>
+            </linearGradient>
+          </defs>
+
+          <g class="arc-node">
+            <circle cx="30" cy="170" r="7" fill="#7C5CFF"/>
+            <text x="30" y="200" text-anchor="middle" class="arc-label">Day 1</text>
+          </g>
+          <g class="arc-node">
+            <circle cx="140" cy="176" r="8" fill="#8C6BFF"/>
+            <text x="140" y="206" text-anchor="middle" class="arc-label">Day 3</text>
+          </g>
+          <g class="arc-node">
+            <circle cx="260" cy="130" r="9.5" fill="#A87BFF"/>
+            <text x="260" y="112" text-anchor="middle" class="arc-label">Day 7</text>
+          </g>
+          <g class="arc-node">
+            <circle cx="400" cy="80" r="11" fill="#D68CFF"/>
+            <text x="400" y="62" text-anchor="middle" class="arc-label">Day 15</text>
+          </g>
+          <g class="arc-node arc-node-final">
+            <circle cx="530" cy="40" r="13" fill="#FF9F4A"/>
+            <circle cx="530" cy="40" r="20" fill="none" stroke="#FF9F4A" stroke-width="1" opacity="0.4"/>
+            <text x="530" y="18" text-anchor="middle" class="arc-label arc-label-final">Day 30 · retained</text>
+          </g>
+        </svg>
+
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span class="hero-stat-num">5</span>
+            <span class="hero-stat-label">revision stages<br/>per problem</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-num">🔥</span>
+            <span class="hero-stat-label">daily streak<br/>to keep you going</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-num">📊</span>
+            <span class="hero-stat-label">topic-wise<br/>progress</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Auth form panel -->
+    <div class="form-panel">
+      <div class="form-box">
+        <div class="mobile-brand">🧠 Cortex</div>
+
+        <div class="tabs">
+          <button id="loginTab" class="tab-btn active">Log in</button>
+          <button id="registerTab" class="tab-btn">Create account</button>
+        </div>
+
+        <form id="loginForm">
+          <p class="form-intro">Welcome back. Log in to see what's due today.</p>
+          <label class="field-label">Email</label>
+          <input type="email" id="loginEmail" placeholder="you@example.com" required />
+          <label class="field-label">Password</label>
+          <input type="password" id="loginPassword" placeholder="••••••••" required />
+          <button type="submit" class="primary-btn">Log in</button>
+        </form>
+
+        <form id="registerForm" class="hidden">
+          <p class="form-intro">Takes about 20 seconds.</p>
+          <label class="field-label">Full name</label>
+          <input type="text" id="registerName" placeholder="Your name" required />
+          <label class="field-label">Email</label>
+          <input type="email" id="registerEmail" placeholder="you@example.com" required />
+          <label class="field-label">Password</label>
+          <input type="password" id="registerPassword" placeholder="Create a password" required />
+          <button type="submit" class="primary-btn">Create account</button>
+        </form>
+
+        <p id="message" class="message"></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>
