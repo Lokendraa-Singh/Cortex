@@ -1,0 +1,29 @@
+name: Daily reminder
+
+on:
+  schedule:
+    # GitHub cron UTC mein chalta hai: 02:33 UTC = 08:03 AM IST
+    - cron: "33 2 * * *"
+  workflow_dispatch: # Actions tab se manually chalane ke liye
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: backend/package-lock.json
+
+      - run: npm install --no-audit --no-fund
+
+      - run: node scripts/sendReminders.js
+        env:
+          MONGO_URI: ${{ secrets.MONGO_URI }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
